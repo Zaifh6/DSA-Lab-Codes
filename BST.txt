@@ -1,0 +1,114 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package bstdemo;
+
+/**
+ *
+ * @author INAM
+ */
+public class BST 
+{
+    Node root;
+
+    public BST() 
+    {
+        root = null;
+    }
+
+    // Method to insert a value into the tree
+    public void insert(int value)
+    {
+        root = insertRec(root, value); 
+    }
+
+    private Node insertRec(Node root, int value) {
+        if (root == null)
+        {
+            root = new Node(value);
+            return root;
+        }
+
+        if (value < root.value)
+        {
+            root.left = insertRec(root.left, value);
+        }
+        else if (value > root.value)
+        {
+            root.right = insertRec(root.right, value);
+        }
+
+        return root;
+    }
+
+    // Method for in-order traversal
+    public void inOrderTraversal()
+    {
+        inOrderRec(root);
+    }
+
+    private void inOrderRec(Node root) {
+        if (root != null) 
+        {
+            inOrderRec(root.left);
+            System.out.print(root.value + " ");
+            inOrderRec(root.right);
+        }
+    }
+
+    // Method for pre-order traversal
+    public void preOrderTraversal()
+    {
+        preOrderRec(root);
+    }
+
+    private void preOrderRec(Node root) 
+    {
+        if (root != null) 
+        {
+            System.out.print(root.value + " ");
+            preOrderRec(root.left);
+            preOrderRec(root.right);
+        }
+    }
+
+    // Method for post-order traversal
+    public void postOrderTraversal()
+    {
+        postOrderRec(root);
+    }
+
+    private void postOrderRec(Node root) 
+    {
+        if (root != null) 
+        {
+            postOrderRec(root.left);
+            postOrderRec(root.right);
+            System.out.print(root.value + " ");
+        }
+    }
+
+    // Method to search for a value in the tree
+    public boolean search(int value)
+    {
+        return searchRec(root, value);
+    }
+
+    private boolean searchRec(Node root, int value)
+    {
+        if (root == null)
+        {
+            return false;
+        }
+
+        if (root.value == value) 
+        {
+            return true;
+        }
+
+        return value < root.value ? searchRec(root.left, value) : searchRec(root.right, value);
+    }
+    
+}
