@@ -1,0 +1,46 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package bstdemo;
+
+/**
+ *
+ * @author INAM
+ */
+public class BSTDemo {
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args)
+    {
+       BST tree = new BST();
+
+        // Insert values
+        tree.insert(50);
+        tree.insert(30);
+        tree.insert(70);
+        tree.insert(20);
+        tree.insert(40);
+        tree.insert(60);
+        tree.insert(80);
+
+        // Perform traversals
+        System.out.print("In-order traversal: ");
+        tree.inOrderTraversal(); // Output: 20 30 40 50 60 70 80
+
+        System.out.print("\nPre-order traversal: ");
+        tree.preOrderTraversal(); // Output: 50 30 20 40 70 60 80
+
+        System.out.print("\nPost-order traversal: ");
+        tree.postOrderTraversal(); // Output: 20 40 30 60 80 70 50
+
+        // Search for a value
+        System.out.println("\nSearch 40: " + tree.search(40)); // Output: true
+        System.out.println("Search 90: " + tree.search(90)); // Output: false
+
+    }
+    
+}
